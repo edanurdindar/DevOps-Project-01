@@ -19,13 +19,9 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt || true
+        run: pip install -r requirements.txt || true
 
-      - name: Install Sonar Scanner
-        run: pip install sonar-scanner
-
-      - name: Run SonarCloud analysis
-        run: sonar-scanner
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
